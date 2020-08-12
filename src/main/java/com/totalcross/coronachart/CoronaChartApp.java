@@ -31,7 +31,7 @@ import totalcross.util.InvalidDateException;
 
 public class CoronaChartApp extends MainWindow {
 
-    Check offlineCheck = new Check("Offline Data");
+    Check offlineCheck = new Check("Online Data");
     final static int ANIMATION_TIME = 5000;
     int currentAnimationTime = 0;
     int nextStopTime = 0;
@@ -172,7 +172,7 @@ public class CoronaChartApp extends MainWindow {
         deathsList.clear();
 
         // Getting the information and filling the lists used to fill the CoronaChart
-        if (!offlineCheck.isChecked())
+        if (offlineCheck.isChecked())
             response = getCoronavirusData("https://coronavirus-map.p.rapidapi.com/v1/summary/latest", HttpStream.GET);
         else
             response = new JSONObject(new String(Vm.getFile("request.json")));

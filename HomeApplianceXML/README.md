@@ -7,4 +7,4 @@ The KnowCode library or this sample doesn't use anything from Android on the dev
 
 Take a look at the UI 
 
-![Home Appliance XML](https://i.imgur.com/yZ6TWgd.png)
+![Home Appliance XML](https://github.com/TotalCross/totalcross-embedded-samples/blob/master/samples_images/R4L7x9T850.gif)

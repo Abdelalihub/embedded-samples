@@ -56,6 +56,11 @@ Choose the way to contribute and follow these steps:
 4. Push to the original branch: `git push origin <project_name>/<location>`
 5. Create the [pull request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request).
 
+### Help us to improve:
+* Find bugs and let us know by creating a [bug report](https://github.com/TotalCross/totalcross-embedded-samples/issues/new?assignees=VaneskaSousa&labels=bug&template=bug_report.md&title=);
+* Create [features request](https://github.com/TotalCross/totalcross-embedded-samples/issues/new?assignees=VaneskaSousa&labels=enhancement&template=feature_request.md&title=) to indicate the features you want to see working with [TotalCross](https://totalcross.com/);
+* Be part of our [community](https://t.me/totalcrosscommunity).
+
 ## 📖 More Samples and Tutorials 
 * [Getting Started with TotalCross](https://learn.totalcross.com/documentation/get-started);
 * [Tutorial Videos](https://www.youtube.com/channel/UCSXUBRBC4Ec3_o9R7-3XX-w);

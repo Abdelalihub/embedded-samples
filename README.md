@@ -1,33 +1,75 @@
-# totalcross-embedded-samples
-Sample code illustrating what is possible to build for Linux Arm using TotalCross. In the topics below, you can see the available examples and illustrative images
+<div align="center"> <a href="https://totalcross.com/" target="_blank"> <img src="https://github.com/TotalCross/totalcross/blob/master/totalcross.gif" alt="totalcross logo"/></a></div>
 
-<!-- ## Samples
+<div align="center"> 
+<h1> totalcross-embedded-samples </h1> </div>
+<p align="center">Sample code illustrating what is possible to build for Linux Arm using TotalCross. </strong></em></p>
+
+<div align="center">
+  <a href="https://learn.totalcross.com/documentation/get-started" target="_blank">Get Started</a>
+  <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
+  <a href="https://totalcross.com/" target="_blank">Website</a>
+  <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
+  <a href="http://learn.totalcross.com/" target="_blank">Docs</a>
+  <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
+  <a href="https://medium.com/totalcross-community" target="_blank">Blog</a>
+  <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
+  <a href="https://t.me/totalcrosscommunity" target="_blank">Telegram</a>
+  <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
+  <a href="https://www.youtube.com/c/totalcross" target="_blank">Videos</a>
+  <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
+  <a href="https://totalcross.com/community/" target="_blank">Community</a>
+</div>
+
+## 💻 Samples
 
 |Sample Name | Description | Project Name  | 
 |:-:|---|---|
-| Home Appliance | Sample of Home Automation| home-apliance |     
-| Corona Chart | Sample chart application that uses a REST API to retrieve and show updated statistics about the Corona/COVID-19 pandemics worldwide.| corona-chart-app |     
-| Dashboard | Dashboad sample used at Embedded World 2020 | dashboard-sample |   -->
+| Home Appliance | Sample of Home Automation| HomeAplianceXML |     
 
-<!-- ## Screenshots or Gifs of the samples -->
+## 📹 Gifs and Screenshots
+### [Home Apliance](https://www.youtube.com/watch?v=ZX_cpSDUCxI&feature=youtu.be):
 
-<!-- ## How to use -->
 
-## Usage
+![HomeAplianceXML](https://github.com/TotalCross/totalcross-embedded-samples/blob/master/samples_images/R4L7x9T850.gif)
 
-- `git clone https://github.com/TotalCross/totalcross-embedded-samples/` or download the .zip by clicking in green "Code" button next to repo name and choosing "Download ZIP".
-- If you downloaded .zip file, uncompress that in a folder and go in same folder that it is.
+## :woman_technologist: Usage
+
+- `git clone https://github.com/TotalCross/totalcross-embedded-samples/` or download the .zip by clicking the green "Code" button next to repo name and choosing "Download ZIP".
+- If you downloaded .zip file, uncompress it in a folder and open it.
 - If you are using Linux, run `code <totalcross-embedded-samples>` or open VS Code and Click in "File > Open..." and select totalcross-embedded-samples in the file dialog that will be shown.
 - With project opened in VS Code, navigate to desired sample folder (like HomeApplianceXML).
 - Look for its [SampleName]Application.java and right-click.
-- Choose "Run" option in popup that will be shown.
+- Choose the "Run" option in the popup.
 - Alternatively, follow the instructions in each sample's README for setting up and running the sample.
-- If you prefer to use another IDE, like Eclipse, IntelliJ, on anyother, see [Getting Started](https://learn.totalcross.com/documentation/get-started)
-- Have a nice development time!
+- Have a nice time developing with TotalCross!
 
-<!-- ## More Samples and Tutorials --> 
-
-<!-- ## Contact -->
+#### If you prefer to use another IDE, like Eclipse, IntelliJ, on anyother, see [Getting Started](https://learn.totalcross.com/documentation/get-started)
 
 
+## 🚧 Contributing to TotalCross Embedded Samples:
+Choose the way to contribute and follow these steps:
 
+### With code:
+1. Fork this repository.
+2. Create a branch: `git checkout -b <branch_name>`.
+3. Make your changes and commit them: `git commit -m '<commit_message>'`
+4. Push to the original branch: `git push origin <project_name>/<location>`
+5. Create the [pull request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request).
+
+## 📖 More Samples and Tutorials 
+* [Getting Started with TotalCross](https://learn.totalcross.com/documentation/get-started);
+* [Tutorial Videos](https://www.youtube.com/channel/UCSXUBRBC4Ec3_o9R7-3XX-w);
+* [Building GUI in Android Studio and running on Raspberry Pi](https://www.youtube.com/watch?v=7o3p14wQPsE)
+
+## 📢 Contact
+* [Community](https://t.me/totalcrosscommunity);
+* [Twitter](https://twitter.com/totalcross);
+* [Linkedin](https://linkedin.com/company/totalcross);
+* [Instagram](https://www.instagram.com/totalcross/);
+* [Facebook](www.facebook.com/TotalCross/);
+* [Email](mailto:vaneska.sousa@totalcross.com).
+
+## :page_facing_up: License
+Copyright (c) TotalCross Platform. All rights reserved.
+
+Licensed under the MIT License.

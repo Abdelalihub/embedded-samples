@@ -72,4 +72,4 @@ Choose the way to contribute and follow these steps:
 ## :page_facing_up: License
 Copyright (c) TotalCross Platform. All rights reserved.
 
-Licensed under the MIT License.
+Licensed under the [MIT License](https://github.com/TotalCross/totalcross-embedded-samples/blob/master/LICENSE).

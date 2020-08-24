@@ -141,6 +141,7 @@ public class HomeApplianceXML extends MainWindow {
 	public HomeApplianceXML() {
 		// UI Style can be set just here, in MainWindow constructor
 		setUIStyle(Settings.MATERIAL_UI);
+		Images.loadImages();
 	}
 
 	// initUI is called by setRect, after the constructor

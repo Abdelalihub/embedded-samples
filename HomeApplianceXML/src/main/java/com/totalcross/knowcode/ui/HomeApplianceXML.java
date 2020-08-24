@@ -90,7 +90,7 @@ public class HomeApplianceXML extends MainWindow {
 	/**
 	 * State boolean value that represents the actual state of background.
 	 */
-	private boolean isDay;
+	private boolean isDay = true;
 
 	/**
 	 * State boolean value used in {@link #setDay(boolean)} to toggle background

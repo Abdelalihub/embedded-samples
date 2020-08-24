@@ -298,6 +298,7 @@ public class HomeApplianceXML extends MainWindow {
 				@Override
 				public void controlPressed(ControlEvent e) {
 					day = true;
+					setDay();
 				}
 
 			});
@@ -319,6 +320,7 @@ public class HomeApplianceXML extends MainWindow {
 				@Override
 				public void controlPressed(ControlEvent e) {
 					day = false;
+					setDay();
 				}
 			});
 		}
@@ -345,9 +347,6 @@ public class HomeApplianceXML extends MainWindow {
 
 		}.start();
 
-		// After entire UI is initiated, adding a UpdateListener will help to monitore
-		// state variables and perform actions based in their values
-		MainWindow.getMainWindow().addUpdateListener(updateListener);
 	}
 
 	/**
@@ -461,6 +460,7 @@ public class HomeApplianceXML extends MainWindow {
 
 			// Execute all comands in list sorted by timestamp, setting state vars, that
 			// will be handled by updateListener
+			MainWindow.getMainWindow().addUpdateListener(updateListener);
 			for (JSONObject command : listCommands) {
 
 				// Gets power state from remote.
@@ -476,6 +476,8 @@ public class HomeApplianceXML extends MainWindow {
 			// Turns off the pilot led
 			if (Settings.platform.equalsIgnoreCase("linux_arm") && pin != null)
 				pin.setValue(0);
+
+			MainWindow.getMainWindow().removeUpdateListener(updateListener);
 
 		} catch (Exception e) {
 			e.printStackTrace();

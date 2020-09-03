@@ -25,8 +25,13 @@ jobs:
     - name: Build with Maven
       working-directory: ${{ matrix.projects }}
       run: mvn package
+    - name: Compressing artifacts
+      run: |
+        zip -r ${{ matrix.config.os }}.zip ${{ matrix.config.os }}/target/install
+        mkdir -p artifacts
+        cp ${{ matrix.config.os }}.zip artifacts/
     - name: Archive results
       uses: actions/upload-artifact@v1
       with:
-        name: artifacts-of-${{ matrix.config.os }}
-        path: ${{ matrix.config.os }}/target/install
+        name: artifacts
+        path: artifacts

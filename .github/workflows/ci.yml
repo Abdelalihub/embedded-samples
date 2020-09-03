@@ -27,9 +27,9 @@ jobs:
       run: mvn package
     - name: Compressing artifacts
       run: |
-        zip -r ${{ matrix.config.os }}.zip ${{ matrix.config.os }}/target/install
+        zip -r ${{ matrix.projects }}.zip ${{ matrix.projects }}/target/install
         mkdir -p artifacts
-        cp ${{ matrix.config.os }}.zip artifacts/
+        cp ${{ matrix.projects }}.zip artifacts/
     - name: Archive results
       uses: actions/upload-artifact@v1
       with:

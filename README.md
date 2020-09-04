@@ -22,15 +22,21 @@
 
 <div align="center"><img src="https://github.com/TotalCross/totalcross-embedded-samples/workflows/Java%20CI%20with%20Maven/badge.svg"/></div>
 
-
 ## 💻 Samples
+These are our samples:
 
 |Sample Name | Description | Project Name  | 
 |:-:|---|---|
 | Home Appliance | Sample of Home Automation| HomeAplianceXML |     
 
+They are available for download here:
+
+| Version | Source | Binaries |
+|:-:|---|---|
+| v1.0.0 | [Source](https://github.com/TotalCross/totalcross-embedded-samples/archive/v1.0.0.zip) | [Binaries](https://github.com/TotalCross/totalcross-embedded-samples/releases/download/v1.0.0/binaries.zip) |     
+
 ## 📹 Gifs and Screenshots
-### [Home Apliance](https://www.youtube.com/watch?v=ZX_cpSDUCxI&feature=youtu.be):
+### [HomeApplianceXML](https://www.youtube.com/watch?v=ZX_cpSDUCxI&feature=youtu.be):
 
 
 ![HomeAplianceXML](https://github.com/TotalCross/totalcross-embedded-samples/blob/master/samples_images/R4L7x9T850.gif)

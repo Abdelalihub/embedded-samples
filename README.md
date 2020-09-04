@@ -20,6 +20,9 @@
   <a href="https://totalcross.com/community/" target="_blank">Community</a>
 </div>
 
+<div align="center"><img src="https://github.com/TotalCross/totalcross-embedded-samples/workflows/Java%20CI%20with%20Maven/badge.svg"/></div>
+
+
 ## 💻 Samples
 
 |Sample Name | Description | Project Name  | 

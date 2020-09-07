@@ -33,7 +33,7 @@ public class CoronaChart<X extends Comparable<X>, Y extends Number> extends Cont
                     yMaxValue = value;
             }
         }
-        int yMax = ((yMaxValue / yStep) + 2) * yStep;
+        final int yMax = ((yMaxValue / yStep) + 2) * yStep;
         super.onPaint(g);
 
         g.foreColor = BORDER_COLOR;
@@ -77,12 +77,12 @@ public class CoronaChart<X extends Comparable<X>, Y extends Number> extends Cont
                 
                 final int h = r.height - xTextHeight - 1 - r.y - 1;
                 for (int i = 0; i < nPoints; i++) {
-                    Data<X, Y> series = data.get(i);
+                    final Data<X, Y> series = data.get(i);
 
                     // x
-                    xPos = r.x + 1 + i * part;
+                    final int xPos = r.x + 1 + i * part;
 
-                    String s = series.x.toString();
+                    final String s = series.x.toString();
                     if (s != null) {
                         g.foreColor = 0xc5cbce;
                         g.drawLine(xPos, r.height - xTextHeight - 1, xPos, r.height - (xTextHeight * 3 / 4) - 1);
@@ -91,8 +91,8 @@ public class CoronaChart<X extends Comparable<X>, Y extends Number> extends Cont
                         g.drawLine(xPos, r.y + 1, xPos, r.height - xTextHeight - 1);
                     }
 
-                    double percentage = 1.0 * series.y.intValue() / (yMax - yMin + yStep);
-                    int yPos = r.height - xTextHeight - 1 - yPart - (int) Math.round((h * percentage));
+                    final double percentage = 1.0 * series.y.intValue() / (yMax - yMin + yStep);
+                    final int yPos = r.height - xTextHeight - 1 - yPart - (int) Math.round((h * percentage));
 
                     xPoints[i] = xPos;
                     yPoints[i] = yPos;
@@ -125,7 +125,7 @@ public class CoronaChart<X extends Comparable<X>, Y extends Number> extends Cont
             Series<X, Y> series2 = series[i];
             if (series2.data.size() > 0) {
                 g.foreColor = Color.WHITE;
-                String texto = series2.title;
+                final String texto = series2.title;
                 g.drawText(texto, r.x + 10, r.y + 6 + (i * this.fmH));
                 g.foreColor = series2.color;
                 g.drawText(Convert.toCurrencyString(series2.data.get(series2.data.size() - 1).y.toString(), 0),

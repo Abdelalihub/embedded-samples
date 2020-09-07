@@ -41,27 +41,27 @@ public class CoronaChart<X extends Comparable<X>, Y extends Number> extends Cont
         g.drawRoundRect(r.x, r.y, r.width, r.height, 10);
 
         final int xTextHeight = 52;
-                // y axis
+        // y axis
         final int yTextLen = Math.max(this.fm.stringWidth(Integer.toString(yMax)),
-                        this.fm.stringWidth(Integer.toString(yMin)));
+                this.fm.stringWidth(Integer.toString(yMin)));
         final int yGap = 20;
         final int yCount = (yMax - yMin) / yStep;
         final int yPart = (r.height - xTextHeight - 1) / (yCount + 1);
 
-                for (int i = 0; i < yCount; i++) {
+        for (int i = 0; i < yCount; i++) {
             final String s = Integer.toString(i * yStep);
             final int yPos = r.height - xTextHeight - 1 - (i + 1) * yPart;
             g.foreColor = BORDER_COLOR;
-                    g.drawLine(r.x, yPos, r.width - yTextLen - yGap, yPos);
+            g.drawLine(r.x, yPos, r.width - yTextLen - yGap, yPos);
 
-                    g.foreColor = 0xc5cbce;
-                    g.drawLine(r.width - 1 - yTextLen, yPos, r.width - 1 - yTextLen - yGap, yPos);
-                    g.drawText(Convert.toCurrencyString(s, 0), r.width - 1 - yTextLen, yPos - this.fmH / 2);
-                }
-                g.foreColor = 0xc5cbce;
+            g.foreColor = 0xc5cbce;
+            g.drawLine(r.width - 1 - yTextLen, yPos, r.width - 1 - yTextLen - yGap, yPos);
+            g.drawText(Convert.toCurrencyString(s, 0), r.width - 1 - yTextLen, yPos - this.fmH / 2);
+        }
+        g.foreColor = 0xc5cbce;
         g.drawLine(r.width - 1 - yTextLen - yGap, r.y + 1, r.width - 1 - yTextLen - yGap, r.height - xTextHeight - 1);
 
-                // x axis
+        // x axis
         g.drawLine(r.x + 1, r.height - xTextHeight - 1, r.width - 1 - yTextLen - yGap, r.height - xTextHeight - 1);
 
         final int widthX = r.width - 1 - yTextLen - yGap;
@@ -74,7 +74,7 @@ public class CoronaChart<X extends Comparable<X>, Y extends Number> extends Cont
                 final int part = widthX / nPoints;
                 final int[] xPoints = new int[nPoints];
                 final int[] yPoints = new int[nPoints];
-                
+
                 final int h = r.height - xTextHeight - 1 - r.y - 1;
                 for (int i = 0; i < nPoints; i++) {
                     final Data<X, Y> series = data.get(i);

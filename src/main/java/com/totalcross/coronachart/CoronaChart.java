@@ -74,6 +74,8 @@ public class CoronaChart<X extends Comparable<X>, Y extends Number> extends Cont
                 final int part = widthX / nPoints;
                 final int[] xPoints = new int[nPoints];
                 final int[] yPoints = new int[nPoints];
+                
+                final int h = r.height - xTextHeight - 1 - r.y - 1;
                 for (int i = 0; i < nPoints; i++) {
                     Data<X, Y> series = data.get(i);
 
@@ -89,7 +91,6 @@ public class CoronaChart<X extends Comparable<X>, Y extends Number> extends Cont
                         g.drawLine(xPos, r.y + 1, xPos, r.height - xTextHeight - 1);
                     }
 
-                    int h = r.height - xTextHeight - 1 - r.y - 1;
                     double percentage = 1.0 * series.y.intValue() / (yMax - yMin + yStep);
                     int yPos = r.height - xTextHeight - 1 - yPart - (int) Math.round((h * percentage));
 

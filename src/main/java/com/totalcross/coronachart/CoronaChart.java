@@ -22,6 +22,8 @@ public class CoronaChart<X extends Comparable<X>, Y extends Number> extends Cont
     @Override
     public void onPaint(Graphics g) {
         final int borderGap = 10;
+        final int BORDER_COLOR = Color.interpolateA(0x869699, this.backColor, 65);
+
         // Getting scale on y Axis
         int yMaxValue = 0;
         if (series[0].data.size() > 0) {
@@ -34,7 +36,7 @@ public class CoronaChart<X extends Comparable<X>, Y extends Number> extends Cont
         int yMax = ((yMaxValue / yStep) + 2) * yStep;
         super.onPaint(g);
 
-        g.foreColor = Color.interpolateA(0x869699, this.backColor, 65);
+        g.foreColor = BORDER_COLOR;
         Rect r = new Rect(borderGap, borderGap, width - (borderGap * 2), height - (borderGap * 2));
         g.drawRoundRect(r.x, r.y, r.width, r.height, 10);
 
@@ -53,9 +55,9 @@ public class CoronaChart<X extends Comparable<X>, Y extends Number> extends Cont
                 int yPart = (r.height - xTextHeight - 1) / (yCount + 1);
 
                 for (int i = 0; i < yCount; i++) {
-                    String s = Integer.toString(i * yStep);
-                    int yPos = r.height - xTextHeight - 1 - (i + 1) * yPart;
-                    g.foreColor = Color.interpolateA(0x869699, this.backColor, 65);
+            final String s = Integer.toString(i * yStep);
+            final int yPos = r.height - xTextHeight - 1 - (i + 1) * yPart;
+            g.foreColor = BORDER_COLOR;
                     g.drawLine(r.x, yPos, r.width - yTextLen - yGap, yPos);
 
                     g.foreColor = 0xc5cbce;
@@ -86,7 +88,7 @@ public class CoronaChart<X extends Comparable<X>, Y extends Number> extends Cont
                         g.foreColor = 0xc5cbce;
                         g.drawLine(xPos, r.height - xTextHeight - 1, xPos, r.height - (xTextHeight * 3 / 4) - 1);
                         g.drawText(s, xPos - (this.fm.stringWidth(s) / 2), r.height - (xTextHeight * 3 / 4) - 1);
-                        g.foreColor = Color.interpolateA(0x869699, this.backColor, 65);
+                        g.foreColor = BORDER_COLOR;
                         g.drawLine(xPos, r.y + 1, xPos, r.height - xTextHeight - 1);
                     }
 

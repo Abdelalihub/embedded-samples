@@ -40,19 +40,13 @@ public class CoronaChart<X extends Comparable<X>, Y extends Number> extends Cont
         Rect r = new Rect(borderGap, borderGap, width - (borderGap * 2), height - (borderGap * 2));
         g.drawRoundRect(r.x, r.y, r.width, r.height, 10);
 
-        for (Series<X, Y> series2 : series) {
-            g.foreColor = 0xc5cbce;
-            List<Data<X, Y>> data = series2.data;
-            int nPoints = data.size();
-            if (nPoints > 0) {
-                int xTextHeight = 52;
-
+        final int xTextHeight = 52;
                 // y axis
-                int yTextLen = Math.max(this.fm.stringWidth(Integer.toString(yMax)),
+        final int yTextLen = Math.max(this.fm.stringWidth(Integer.toString(yMax)),
                         this.fm.stringWidth(Integer.toString(yMin)));
-                int yGap = 20;
-                int yCount = (yMax - yMin) / yStep;
-                int yPart = (r.height - xTextHeight - 1) / (yCount + 1);
+        final int yGap = 20;
+        final int yCount = (yMax - yMin) / yStep;
+        final int yPart = (r.height - xTextHeight - 1) / (yCount + 1);
 
                 for (int i = 0; i < yCount; i++) {
             final String s = Integer.toString(i * yStep);
@@ -65,18 +59,21 @@ public class CoronaChart<X extends Comparable<X>, Y extends Number> extends Cont
                     g.drawText(Convert.toCurrencyString(s, 0), r.width - 1 - yTextLen, yPos - this.fmH / 2);
                 }
                 g.foreColor = 0xc5cbce;
-                g.drawLine(r.width - 1 - yTextLen - yGap, r.y + 1, r.width - 1 - yTextLen - yGap,
-                        r.height - xTextHeight - 1);
+        g.drawLine(r.width - 1 - yTextLen - yGap, r.y + 1, r.width - 1 - yTextLen - yGap, r.height - xTextHeight - 1);
 
                 // x axis
-                g.drawLine(r.x + 1, r.height - xTextHeight - 1, r.width - 1 - yTextLen - yGap,
-                        r.height - xTextHeight - 1);
-                int widthX = r.width - 1 - yTextLen - yGap;
-                int part = widthX / nPoints;
-                int xPos = r.x + 1;
+        g.drawLine(r.x + 1, r.height - xTextHeight - 1, r.width - 1 - yTextLen - yGap, r.height - xTextHeight - 1);
 
-                int[] xPoints = new int[nPoints];
-                int[] yPoints = new int[nPoints];
+        final int widthX = r.width - 1 - yTextLen - yGap;
+
+        for (Series<X, Y> series2 : series) {
+            g.foreColor = 0xc5cbce;
+            final List<Data<X, Y>> data = series2.data;
+            final int nPoints = data.size();
+            if (nPoints > 0) {
+                final int part = widthX / nPoints;
+                final int[] xPoints = new int[nPoints];
+                final int[] yPoints = new int[nPoints];
                 for (int i = 0; i < nPoints; i++) {
                     Data<X, Y> series = data.get(i);
 

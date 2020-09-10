@@ -17,6 +17,11 @@ public class CoronaChart<X extends Comparable<X>, Y extends Number> extends Cont
     int yStep = 1000 * 1000;
     int yMaxValue;
 
+    final int xTextHeight = 52;
+    final int yGap = 20;
+    int yTextLen;
+    int yCount;;
+
     public CoronaChart(Series<X, Y>... series) {
         changeSeries(series);
     }
@@ -30,12 +35,6 @@ public class CoronaChart<X extends Comparable<X>, Y extends Number> extends Cont
         Rect r = new Rect(borderGap, borderGap, width - (borderGap * 2), height - (borderGap * 2));
         g.drawRoundRect(r.x, r.y, r.width, r.height, 10);
 
-        final int xTextHeight = 52;
-        // y axis
-        final int yTextLen = Math.max(this.fm.stringWidth(Integer.toString(yMax)),
-                this.fm.stringWidth(Integer.toString(yMin)));
-        final int yGap = 20;
-        final int yCount = (yMax - yMin) / yStep;
         final int yPart = (r.height - xTextHeight - 1) / (yCount + 1);
 
         for (int i = 0; i < yCount; i++) {
@@ -133,6 +132,10 @@ public class CoronaChart<X extends Comparable<X>, Y extends Number> extends Cont
             yMaxValue = Math.max(yMaxValue, series2.data.get(series2.data.size() - 1).y.intValue());
         }
         yMax = ((yMaxValue / yStep) + 2) * yStep;
+
+        // y axis
+        yTextLen = Math.max(this.fm.stringWidth(Integer.toString(yMax)), this.fm.stringWidth(Integer.toString(yMin)));
+        yCount = (yMax - yMin) / yStep;
 
         Window.needsPaint = true;
     }

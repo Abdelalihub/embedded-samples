@@ -28,9 +28,7 @@ jobs:
     - name: Compressing artifacts
       run: |
         mkdir -p artifacts
-        cd ${{ matrix.projects }}/target/
-        zip -r ${{ matrix.projects }}.zip install
-        cp ${{ matrix.projects }}.zip ../../artifacts/
+        mv ${{ matrix.projects }}/target/install artifacts/${{ matrix.projects }}
     - name: Archive results
       uses: actions/upload-artifact@v1
       with:

@@ -4,9 +4,9 @@ import totalcross.sys.Settings;
 
 public class Positioning {
     public static int getWidthDP(int value) {
-        return value*960/Settings.screenWidth;
+        return value*Settings.screenWidth/960;
     }
     public static int getHeightDP(int value) {
-        return value*640/Settings.screenHeight;
+        return value*Settings.screenHeight/640;
     }
 }

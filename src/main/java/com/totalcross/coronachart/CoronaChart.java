@@ -26,8 +26,6 @@ public class CoronaChart<X extends Comparable<X>, Y extends Number> extends Cont
         final int borderGap = 10;
         final int BORDER_COLOR = Color.interpolateA(0x869699, this.backColor, 65);
 
-        super.onPaint(g);
-
         g.foreColor = BORDER_COLOR;
         Rect r = new Rect(borderGap, borderGap, width - (borderGap * 2), height - (borderGap * 2));
         g.drawRoundRect(r.x, r.y, r.width, r.height, 10);

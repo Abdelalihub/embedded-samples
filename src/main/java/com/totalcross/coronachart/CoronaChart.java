@@ -13,6 +13,7 @@ public class CoronaChart<X extends Comparable<X>, Y extends Number> extends Cont
 
     Series<X, Y>[] series;
     int yMin = 0;
+    int yMax;
     int yStep = 1000 * 1000;
     int yMaxValue;
 
@@ -25,7 +26,6 @@ public class CoronaChart<X extends Comparable<X>, Y extends Number> extends Cont
         final int borderGap = 10;
         final int BORDER_COLOR = Color.interpolateA(0x869699, this.backColor, 65);
 
-        final int yMax = ((yMaxValue / yStep) + 2) * yStep;
         super.onPaint(g);
 
         g.foreColor = BORDER_COLOR;
@@ -134,6 +134,8 @@ public class CoronaChart<X extends Comparable<X>, Y extends Number> extends Cont
         for (Series<X,Y> series2 : series) {
             yMaxValue = Math.max(yMaxValue, series2.data.get(series2.data.size() - 1).y.intValue());
         }
+        yMax = ((yMaxValue / yStep) + 2) * yStep;
+
         Window.needsPaint = true;
     }
 

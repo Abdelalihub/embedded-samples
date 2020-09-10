@@ -22,6 +22,7 @@ public class CoronaChart<X extends Comparable<X>, Y extends Number> extends Cont
     int yTextLen;
     int yCount;;
 
+    @SafeVarargs
     public CoronaChart(Series<X, Y>... series) {
         changeSeries(series);
     }
@@ -123,7 +124,8 @@ public class CoronaChart<X extends Comparable<X>, Y extends Number> extends Cont
         }
     }
 
-    public void changeSeries(Series<X, Y>... series) {
+    @SafeVarargs
+    public final void changeSeries(Series<X, Y>... series) {
         this.series = series;
 
         // Getting scale on y Axis

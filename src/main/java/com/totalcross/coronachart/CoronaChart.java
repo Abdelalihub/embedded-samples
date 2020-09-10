@@ -17,10 +17,14 @@ public class CoronaChart<X extends Comparable<X>, Y extends Number> extends Cont
     int yStep = 1000 * 1000;
     int yMaxValue;
 
+    final int borderGap = 10;
     final int xTextHeight = 52;
     final int yGap = 20;
     int yTextLen;
     int yCount;;
+
+    Rect r;
+    int widthX;
 
     @SafeVarargs
     public CoronaChart(Series<X, Y>... series) {
@@ -28,12 +32,16 @@ public class CoronaChart<X extends Comparable<X>, Y extends Number> extends Cont
     }
 
     @Override
+    protected void onBoundsChanged(boolean screenChanged) {
+        r = new Rect(borderGap, borderGap, width - (borderGap * 2), height - (borderGap * 2));
+        widthX = r.width - 1 - yTextLen - yGap;
+    }
+
+    @Override
     public void onPaint(Graphics g) {
-        final int borderGap = 10;
         final int BORDER_COLOR = Color.interpolateA(0x869699, this.backColor, 65);
 
         g.foreColor = BORDER_COLOR;
-        Rect r = new Rect(borderGap, borderGap, width - (borderGap * 2), height - (borderGap * 2));
         g.drawRoundRect(r.x, r.y, r.width, r.height, 10);
 
         final int yPart = (r.height - xTextHeight - 1) / (yCount + 1);
@@ -53,8 +61,6 @@ public class CoronaChart<X extends Comparable<X>, Y extends Number> extends Cont
         
         // x axis
         g.drawLine(r.x + 1, r.height - xTextHeight - 1, r.width - 1 - yTextLen - yGap, r.height - xTextHeight - 1);
-        
-        final int widthX = r.width - 1 - yTextLen - yGap;
         
         for (int i = 0; i < series.length; i++) {
             final Series<X, Y> series2 = series[i];

@@ -61,7 +61,7 @@ public class MedicalHome extends Container {
                 dateLabel.setText(time.toString().substring(0, 5) + " - " + DAYS_OF_WEEK[date.getDayOfWeek()] + ", "
                         + date.toString().substring(0, date.toString().length() - 4)
                         + date.toString().substring(date.toString().length() - 2, date.toString().length()));
-                add(dateLabel);
+                container.add(dateLabel);
                 SemiCircleProgress oxygenSemiCircleProgress = new SemiCircleProgress(20, 99, 84,
                         SemiCircleProgress.LEFT);
                 oxygenSemiCircleProgress.setFilledColor(0x00A8DB);
@@ -69,7 +69,7 @@ public class MedicalHome extends Container {
                 oxygenSemiCircleProgress.setUseGradient(true);
                 oxygenSemiCircleProgress.setGradientBack(0x22202A);
                 oxygenSemiCircleProgress.setGradientFore(0x142D3B);
-                add(oxygenSemiCircleProgress, Positioning.getWidthDP(255), Positioning.getHeightDP(96),
+                container.add(oxygenSemiCircleProgress, Positioning.getWidthDP(255), Positioning.getHeightDP(96),
                         Positioning.getWidthDP(211), Positioning.getHeightDP(448));
                 SemiCircleProgress pulseSemiCircleProgress = new SemiCircleProgress(20, 99, 84,
                         SemiCircleProgress.RIGHT);
@@ -78,12 +78,12 @@ public class MedicalHome extends Container {
                 pulseSemiCircleProgress.setUseGradient(true);
                 pulseSemiCircleProgress.setGradientBack(0x241F28);
                 pulseSemiCircleProgress.setGradientFore(0x321218);
-                add(pulseSemiCircleProgress, Positioning.getWidthDP(495), Positioning.getHeightDP(96),
+                container.add(pulseSemiCircleProgress, Positioning.getWidthDP(495), Positioning.getHeightDP(96),
                         Positioning.getWidthDP(211), Positioning.getHeightDP(448));
-                add(container.getControlByID("@+id/lungsImage"));
-                add(container.getControlByID("@+id/lungsLabel"));
-                add(container.getControlByID("@+id/heartImage"));
-                add(container.getControlByID("@+id/heartLabel"));
+                container.add(container.getControlByID("@+id/lungsImage"));
+                container.add(container.getControlByID("@+id/lungsLabel"));
+                container.add(container.getControlByID("@+id/heartImage"));
+                container.add(container.getControlByID("@+id/heartLabel"));
                 oxygenSemiCircleProgress.addPenListener(new PenListener() {
 
                     @Override

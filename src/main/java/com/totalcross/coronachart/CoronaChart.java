@@ -14,9 +14,10 @@ public class CoronaChart<X extends Comparable<X>, Y extends Number> extends Cont
     Series<X, Y>[] series;
     int yMin = 0;
     int yStep = 1000 * 1000;
+    int yMaxValue;
 
     public CoronaChart(Series<X, Y>... series) {
-        this.series = series;
+        changeSeries(series);
     }
 
     @Override
@@ -24,15 +25,6 @@ public class CoronaChart<X extends Comparable<X>, Y extends Number> extends Cont
         final int borderGap = 10;
         final int BORDER_COLOR = Color.interpolateA(0x869699, this.backColor, 65);
 
-        // Getting scale on y Axis
-        int yMaxValue = 0;
-        if (series[0].data.size() > 0) {
-            for (Series<X, Y> series2 : series) {
-                int value = series2.data.get(series2.data.size() - 1).y.intValue();
-                if (yMaxValue < value)
-                    yMaxValue = value;
-            }
-        }
         final int yMax = ((yMaxValue / yStep) + 2) * yStep;
         super.onPaint(g);
 
@@ -136,6 +128,12 @@ public class CoronaChart<X extends Comparable<X>, Y extends Number> extends Cont
 
     public void changeSeries(Series<X, Y>... series) {
         this.series = series;
+
+        // Getting scale on y Axis
+        yMaxValue = Integer.MIN_VALUE;
+        for (Series<X,Y> series2 : series) {
+            yMaxValue = Math.max(yMaxValue, series2.data.get(series2.data.size() - 1).y.intValue());
+        }
         Window.needsPaint = true;
     }
 

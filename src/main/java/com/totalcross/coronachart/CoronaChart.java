@@ -50,13 +50,14 @@ public class CoronaChart<X extends Comparable<X>, Y extends Number> extends Cont
         }
         g.foreColor = 0xc5cbce;
         g.drawLine(r.width - 1 - yTextLen - yGap, r.y + 1, r.width - 1 - yTextLen - yGap, r.height - xTextHeight - 1);
-
+        
         // x axis
         g.drawLine(r.x + 1, r.height - xTextHeight - 1, r.width - 1 - yTextLen - yGap, r.height - xTextHeight - 1);
-
+        
         final int widthX = r.width - 1 - yTextLen - yGap;
-
-        for (Series<X, Y> series2 : series) {
+        
+        for (int i = 0; i < series.length; i++) {
+            final Series<X, Y> series2 = series[i];
             g.foreColor = 0xc5cbce;
             final List<Data<X, Y>> data = series2.data;
             final int nPoints = data.size();
@@ -66,11 +67,11 @@ public class CoronaChart<X extends Comparable<X>, Y extends Number> extends Cont
                 final int[] yPoints = new int[nPoints];
 
                 final int h = r.height - xTextHeight - 1 - r.y - 1;
-                for (int i = 0; i < nPoints; i++) {
-                    final Data<X, Y> series = data.get(i);
+                for (int j = 0; j < nPoints; j++) {
+                    final Data<X, Y> series = data.get(j);
 
                     // x
-                    final int xPos = r.x + 1 + i * part;
+                    final int xPos = r.x + 1 + j * part;
 
                     final String s = series.x.toString();
                     if (s != null) {
@@ -84,35 +85,33 @@ public class CoronaChart<X extends Comparable<X>, Y extends Number> extends Cont
                     final double percentage = 1.0 * series.y.intValue() / (yMax - yMin + yStep);
                     final int yPos = r.height - xTextHeight - 1 - yPart - (int) Math.round((h * percentage));
 
-                    xPoints[i] = xPos;
-                    yPoints[i] = yPos;
+                    xPoints[j] = xPos;
+                    yPoints[j] = yPos;
                 }
                 g.foreColor = series2.color;
                 g.drawDots(r.x + 1, yPoints[yPoints.length - 1], widthX, yPoints[yPoints.length - 1]);
                 g.drawPolyline(xPoints, yPoints, nPoints);
 
                 // paint more pixels around to make the line thicker
-                for (int i = 0; i < nPoints; i++) {
-                    xPoints[i] += 1;
+                for (int j = 0; j < nPoints; j++) {
+                    xPoints[j] += 1;
                 }
                 g.drawPolyline(xPoints, yPoints, nPoints);
-                for (int i = 0; i < nPoints; i++) {
-                    xPoints[i] -= 2;
+                for (int j = 0; j < nPoints; j++) {
+                    xPoints[j] -= 2;
                 }
                 g.drawPolyline(xPoints, yPoints, nPoints);
-                for (int i = 0; i < nPoints; i++) {
-                    xPoints[i] += 1;
-                    yPoints[i] += 1;
+                for (int j = 0; j < nPoints; j++) {
+                    xPoints[j] += 1;
+                    yPoints[j] += 1;
                 }
                 g.drawPolyline(xPoints, yPoints, nPoints);
-                for (int i = 0; i < nPoints; i++) {
-                    yPoints[i] -= 2;
+                for (int j = 0; j < nPoints; j++) {
+                    yPoints[j] -= 2;
                 }
                 g.drawPolyline(xPoints, yPoints, nPoints);
             }
-        }
-        for (int i = 0; i < series.length; i++) {
-            Series<X, Y> series2 = series[i];
+        
             if (series2.data.size() > 0) {
                 g.foreColor = Color.WHITE;
                 final String texto = series2.title;

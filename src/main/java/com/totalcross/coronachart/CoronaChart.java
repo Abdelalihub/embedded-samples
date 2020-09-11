@@ -5,7 +5,6 @@ import java.util.List;
 
 import totalcross.sys.Convert;
 import totalcross.ui.Control;
-import totalcross.ui.Window;
 import totalcross.ui.gfx.Color;
 import totalcross.ui.gfx.Graphics;
 import totalcross.ui.gfx.Rect;
@@ -51,7 +50,8 @@ public class CoronaChart<X extends Comparable<X>, Y extends Number> extends Cont
         final int BORDER_COLOR = Color.interpolateA(0x869699, this.backColor, 65);
 
         g.foreColor = BORDER_COLOR;
-        g.drawRoundRect(r.x, r.y, r.width, r.height, 10);
+        g.backColor = this.backColor;
+        g.fillRoundRect(r.x, r.y, r.width, r.height, 10);
 
         final int yPart = (r.height - xTextHeight - 1) / (yCount + 1);
 
@@ -150,7 +150,7 @@ public class CoronaChart<X extends Comparable<X>, Y extends Number> extends Cont
         yTextLen = Math.max(this.fm.stringWidth(Integer.toString(yMax)), this.fm.stringWidth(Integer.toString(yMin)));
         yCount = (yMax - yMin) / yStep;
 
-        Window.needsPaint = true;
+        repaintNow();
     }
 
     @SafeVarargs
@@ -168,7 +168,7 @@ public class CoronaChart<X extends Comparable<X>, Y extends Number> extends Cont
         yTextLen = Math.max(this.fm.stringWidth(Integer.toString(yMax)), this.fm.stringWidth(Integer.toString(yMin)));
         yCount = (yMax - yMin) / yStep;
 
-        Window.needsPaint = true;
+        repaintNow();
     }
 
     public static class Series<X extends Comparable<X>, Y extends Number> {

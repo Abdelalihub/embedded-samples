@@ -127,6 +127,9 @@ public class CoronaChartApp extends MainWindow {
 
         add(btnStartStop, LEFT + this.fmH, AFTER + this.fmH);
         offlineCheck.setBackForeColors(this.backColor, Color.WHITE);
+        offlineCheck.addValueChangeHandler(e -> {
+            fillData();
+        });
         add(offlineCheck, AFTER + this.fmH, CENTER_OF);
         add(animationBtnFactory.apply("Month", MyDate.MONTH), RIGHT - this.fmH, SAME);
         add(animationBtnFactory.apply("Week", MyDate.WEEK), BEFORE - this.fmH, SAME);

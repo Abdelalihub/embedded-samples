@@ -63,8 +63,6 @@
 					<name>${project.name}</name>
 					<platforms>
 						<platform>-linux_arm</platform>
-						<platform>-android</platform>
-
 					</platforms>
 				</configuration>
 				<executions>

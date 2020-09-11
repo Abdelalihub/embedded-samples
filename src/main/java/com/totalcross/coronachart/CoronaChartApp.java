@@ -234,17 +234,16 @@ class MyDate implements Comparable<MyDate> {
     int day;
     int month;
     String s = null;
-    public static int mode;
     public static final int DAY = 0;
     public static final int MONTH = 1;
     public static final int WEEK = 2;
+    public static int mode = DAY;
     public static Date firstDay;
 
     public MyDate(int yyyyMMdd) {
         this.date = yyyyMMdd;
         this.day = this.date % 100;
         this.month = yyyyMMdd / 100 % 100;
-        MyDate.mode = DAY;
         if (this.day == 1) {
             s = Date.monthNames[this.month].substring(0, 3);
         } else if (this.day == 10 || this.day == 19) {

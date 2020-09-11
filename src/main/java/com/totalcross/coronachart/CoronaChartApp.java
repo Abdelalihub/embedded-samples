@@ -185,8 +185,7 @@ public class CoronaChartApp extends MainWindow {
     }
 
     private void restartAnimation() {
-        // Filling the lists with confirmed, recovered and death cases
-        fillData();
+        cc.reset();
         // Removes the animation and sets the variables to start another animation
         MainWindow.getMainWindow().removeUpdateListener(updateListener);
         index = 0;

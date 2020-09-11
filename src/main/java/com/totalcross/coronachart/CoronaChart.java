@@ -33,6 +33,10 @@ public class CoronaChart<X extends Comparable<X>, Y extends Number> extends Cont
         changeSeries(series);
     }
 
+    public void reset() {
+        index = 0;
+    }
+
     @Override
     protected void onBoundsChanged(boolean screenChanged) {
         r = new Rect(borderGap, borderGap, width - (borderGap * 2), height - (borderGap * 2));

@@ -39,9 +39,6 @@ public class CoronaChartApp extends MainWindow {
     int index = 0;
     JSONArray dates;
     JSONArray array;
-    List<Data<MyDate, Integer>> confirmed = new ArrayList<>();
-    List<Data<MyDate, Integer>> recovered = new ArrayList<>();
-    List<Data<MyDate, Integer>> deaths = new ArrayList<>();
     String date;
     JSONObject item;
     CoronaChart.Series<MyDate, Integer> confirmedSeries;
@@ -70,16 +67,16 @@ public class CoronaChartApp extends MainWindow {
                     case MyDate.MONTH:
                         if (confirmedList.get(index).x.toDate().equals(firstDay) || confirmedList.get(index).x.day == 1
                                 || index == confirmedList.size() - 1) {
-                            changeSeries(index);
+                            cc.changeIndex(index);
                         }
                         break;
                     case MyDate.WEEK:
                         if (confirmedList.get(index).x.exactlyXWeeksSinceDate(MyDate.firstDay)) {
-                            changeSeries(index);
+                            cc.changeIndex(index);
                         }
                         break;
                     case MyDate.DAY:
-                        changeSeries(index);
+                        cc.changeIndex(index);
                         break;
                 }
                 if (index != confirmedList.size() - 1) {
@@ -138,16 +135,13 @@ public class CoronaChartApp extends MainWindow {
         try {
             // Setting the first CoronaChart
             MyDate.firstDay = confirmedList.get(0).x.toDate();
-            confirmed.add(confirmedList.get(index));
-            recovered.add(recoveredList.get(index));
-            deaths.add(deathsList.get(index));
-            confirmedSeries = new CoronaChart.Series<>(confirmed);
+            confirmedSeries = new CoronaChart.Series<>(confirmedList);
             confirmedSeries.title = "Confirmed";
             confirmedSeries.color = Colors.COLOR_CONFIRMED_CASES;
-            recoveredSeries = new CoronaChart.Series<>(recovered);
+            recoveredSeries = new CoronaChart.Series<>(recoveredList);
             recoveredSeries.title = "Recovered";
             recoveredSeries.color = Colors.COLOR_RECOVERED_CASES;
-            deathsSeries = new CoronaChart.Series<>(deaths);
+            deathsSeries = new CoronaChart.Series<>(deathsList);
             deathsSeries.title = "Deaths";
             deathsSeries.color = Colors.COLOR_DEATH_CASES;
             cc = new CoronaChart<>(confirmedSeries, recoveredSeries, deathsSeries);
@@ -195,9 +189,6 @@ public class CoronaChartApp extends MainWindow {
         fillData();
         // Removes the animation and sets the variables to start another animation
         MainWindow.getMainWindow().removeUpdateListener(updateListener);
-        confirmed.clear();
-        recovered.clear();
-        deaths.clear();
         index = 0;
         currentAnimationTime = 0;
         nextStopTime = 0;
@@ -214,24 +205,6 @@ public class CoronaChartApp extends MainWindow {
         for (int i = 0; i < this.confirmedList.size(); i++) {
             this.confirmedList.get(i).x.changeMode(mode);
         }
-    }
-
-    private void changeSeries(int index) {
-        // Changes the series, adding another value from the list.
-        confirmed.add(confirmedList.get(index));
-        recovered.add(recoveredList.get(index));
-        deaths.add(deathsList.get(index));
-
-        confirmedSeries = new CoronaChart.Series<>(confirmed);
-        confirmedSeries.title = "Confirmed";
-        confirmedSeries.color = Colors.COLOR_CONFIRMED_CASES;
-        recoveredSeries = new CoronaChart.Series<>(recovered);
-        recoveredSeries.title = "Recovered";
-        recoveredSeries.color = Colors.COLOR_RECOVERED_CASES;
-        deathsSeries = new CoronaChart.Series<>(deaths);
-        deathsSeries.title = "Deaths";
-        deathsSeries.color = Colors.COLOR_DEATH_CASES;
-        cc.changeSeries(confirmedSeries, recoveredSeries, deathsSeries);
     }
 
     JSONObject getCoronavirusData(final String url, String httpType) {

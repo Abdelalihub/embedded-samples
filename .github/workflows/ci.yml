@@ -28,7 +28,7 @@ jobs:
     - name: Compressing artifacts
       run: |
         mkdir -p artifacts
-        mv ${{ matrix.projects }}/target/install artifacts/${{ matrix.projects }}
+        mv ${{ matrix.projects }}/target/install/linux_arm artifacts/${{ matrix.projects }}
     - name: Archive results
       uses: actions/upload-artifact@v1
       with:

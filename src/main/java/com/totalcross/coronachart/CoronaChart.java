@@ -116,14 +116,12 @@ public class CoronaChart<X extends Comparable<X>, Y extends Number> extends Cont
                     yPoints[j] -= 2;
                 }
                 g.drawPolyline(xPoints, yPoints, nPoints);
-            }
-        
-            if (series2.data.size() > 0) {
+
                 g.foreColor = Color.WHITE;
                 final String texto = series2.title;
                 g.drawText(texto, r.x + 10, r.y + 6 + (i * this.fmH));
                 g.foreColor = series2.color;
-                g.drawText(Convert.toCurrencyString(series2.data.get(series2.data.size() - 1).y.toString(), 0),
+                g.drawText(Convert.toCurrencyString(data.get(index - 1).y.toString(), 0),
                         r.x + 15 + this.fm.stringWidth(texto), r.y + 6 + (i * this.fmH));
             }
         }

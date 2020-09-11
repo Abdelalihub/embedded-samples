@@ -32,5 +32,5 @@ jobs:
     - name: Archive results
       uses: actions/upload-artifact@v1
       with:
-        name: artifacts
+        name: totalcross-embedded-samples
         path: artifacts

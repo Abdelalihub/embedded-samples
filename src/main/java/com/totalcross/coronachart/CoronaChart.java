@@ -141,8 +141,10 @@ public class CoronaChart<X extends Comparable<X>, Y extends Number> extends Cont
 
         // Getting scale on y Axis
         yMaxValue = Integer.MIN_VALUE;
-        for (Series<X,Y> series2 : series) {
-            yMaxValue = Math.max(yMaxValue, series2.data.get(listToDraw.get(listToDraw.size() - 1)).y.intValue());
+        for (Series<X, Y> series2 : series) {
+            for (Integer i : listToDraw) {
+                yMaxValue = Math.max(yMaxValue, series2.data.get(i).y.intValue());
+            }
         }
         yMax = ((yMaxValue / yStep) + 2) * yStep;
 
@@ -160,7 +162,9 @@ public class CoronaChart<X extends Comparable<X>, Y extends Number> extends Cont
         // Getting scale on y Axis
         yMaxValue = Integer.MIN_VALUE;
         for (Series<X,Y> series2 : series) {
-            yMaxValue = Math.max(yMaxValue, series2.data.get(listToDraw.get(0)).y.intValue());
+            for (Integer i : listToDraw) {
+                yMaxValue = Math.max(yMaxValue, series2.data.get(i).y.intValue());
+            }
         }
         yMax = ((yMaxValue / yStep) + 2) * yStep;
 

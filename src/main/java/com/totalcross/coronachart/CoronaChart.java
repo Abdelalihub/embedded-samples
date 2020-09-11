@@ -1,5 +1,6 @@
 package com.totalcross.coronachart;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import totalcross.sys.Convert;
@@ -26,15 +27,17 @@ public class CoronaChart<X extends Comparable<X>, Y extends Number> extends Cont
     Rect r;
     int widthX;
 
-    private int index = 0;
+    private List<Integer> listToDraw = new ArrayList<>();
 
     @SafeVarargs
     public CoronaChart(Series<X, Y>... series) {
+        reset();
+        listToDraw.add(0);
         changeSeries(series);
     }
 
     public void reset() {
-        index = 0;
+        listToDraw.clear();
     }
 
     @Override
@@ -72,14 +75,15 @@ public class CoronaChart<X extends Comparable<X>, Y extends Number> extends Cont
             final Series<X, Y> series2 = series[i];
             g.foreColor = 0xc5cbce;
             final List<Data<X, Y>> data = series2.data;
-            if (index > 0) {
-                final int part = widthX / index;
-                final int[] xPoints = new int[index];
-                final int[] yPoints = new int[index];
+            final int nPoints = listToDraw.size();
+            if (nPoints > 0) {
+                final int part = widthX / nPoints;
+                final int[] xPoints = new int[nPoints];
+                final int[] yPoints = new int[nPoints];
 
                 final int h = r.height - xTextHeight - 1 - r.y - 1;
-                for (int j = 0; j < index; j++) {
-                    final Data<X, Y> series = data.get(j);
+                for (int j = 0; j < nPoints; j++) {
+                    final Data<X, Y> series = data.get(listToDraw.get(j));
 
                     // x
                     final int xPos = r.x + 1 + j * part;
@@ -101,44 +105,44 @@ public class CoronaChart<X extends Comparable<X>, Y extends Number> extends Cont
                 }
                 g.foreColor = series2.color;
                 g.drawDots(r.x + 1, yPoints[yPoints.length - 1], widthX, yPoints[yPoints.length - 1]);
-                g.drawPolyline(xPoints, yPoints, index);
+                g.drawPolyline(xPoints, yPoints, nPoints);
 
                 // paint more pixels around to make the line thicker
-                for (int j = 0; j < index; j++) {
+                for (int j = 0; j < nPoints; j++) {
                     xPoints[j] += 1;
                 }
-                g.drawPolyline(xPoints, yPoints, index);
-                for (int j = 0; j < index; j++) {
+                g.drawPolyline(xPoints, yPoints, nPoints);
+                for (int j = 0; j < nPoints; j++) {
                     xPoints[j] -= 2;
                 }
-                g.drawPolyline(xPoints, yPoints, index);
-                for (int j = 0; j < index; j++) {
+                g.drawPolyline(xPoints, yPoints, nPoints);
+                for (int j = 0; j < nPoints; j++) {
                     xPoints[j] += 1;
                     yPoints[j] += 1;
                 }
-                g.drawPolyline(xPoints, yPoints, index);
-                for (int j = 0; j < index; j++) {
+                g.drawPolyline(xPoints, yPoints, nPoints);
+                for (int j = 0; j < nPoints; j++) {
                     yPoints[j] -= 2;
                 }
-                g.drawPolyline(xPoints, yPoints, index);
+                g.drawPolyline(xPoints, yPoints, nPoints);
 
                 g.foreColor = Color.WHITE;
                 final String texto = series2.title;
                 g.drawText(texto, r.x + 10, r.y + 6 + (i * this.fmH));
                 g.foreColor = series2.color;
-                g.drawText(Convert.toCurrencyString(data.get(index - 1).y.toString(), 0),
+                g.drawText(Convert.toCurrencyString(data.get(listToDraw.get(listToDraw.size() - 1)).y.toString(), 0),
                         r.x + 15 + this.fm.stringWidth(texto), r.y + 6 + (i * this.fmH));
             }
         }
     }
 
     public void changeIndex(int index) {
-        this.index = index;
+        listToDraw.add(index);
 
         // Getting scale on y Axis
         yMaxValue = Integer.MIN_VALUE;
         for (Series<X,Y> series2 : series) {
-            yMaxValue = Math.max(yMaxValue, series2.data.get(index).y.intValue());
+            yMaxValue = Math.max(yMaxValue, series2.data.get(listToDraw.get(listToDraw.size() - 1)).y.intValue());
         }
         yMax = ((yMaxValue / yStep) + 2) * yStep;
 
@@ -156,7 +160,7 @@ public class CoronaChart<X extends Comparable<X>, Y extends Number> extends Cont
         // Getting scale on y Axis
         yMaxValue = Integer.MIN_VALUE;
         for (Series<X,Y> series2 : series) {
-            yMaxValue = Math.max(yMaxValue, series2.data.get(index).y.intValue());
+            yMaxValue = Math.max(yMaxValue, series2.data.get(listToDraw.get(0)).y.intValue());
         }
         yMax = ((yMaxValue / yStep) + 2) * yStep;
 

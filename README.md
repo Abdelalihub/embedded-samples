@@ -39,7 +39,7 @@ They are available for download here:
 ### [HomeApplianceXML](https://www.youtube.com/watch?v=ZX_cpSDUCxI&feature=youtu.be):
 
 
-![HomeAplianceXML](https://github.com/TotalCross/totalcross-embedded-samples/blob/master/samples_images/R4L7x9T850.gif)
+![HomeAplianceXML](https://github.com/TotalCross/totalcross-embedded-samples/blob/master/images/R4L7x9T850.gif)
 
 ## :woman_technologist: Usage
 

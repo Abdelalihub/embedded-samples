@@ -13,6 +13,7 @@ jobs:
           matrix:
             projects:
               - HomeApplianceXML
+              - dashboard-ew2020
     runs-on: ubuntu-latest
 
     steps:

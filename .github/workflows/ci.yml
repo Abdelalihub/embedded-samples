@@ -9,6 +9,7 @@ on:
 jobs:
 
   build:
+    if: github.event_name == 'push' && contains(toJson(github.event.head_commit.message), '[skip-ci]') == false
     strategy:
           matrix:
             projects:
